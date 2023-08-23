@@ -3,3 +3,9 @@
   padding: 0;
   border: 1px solid red;
 }
+
+.board {
+  width: 500px;
+  height: 500px;
+  display: grid;
+}
