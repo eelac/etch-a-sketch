@@ -8,18 +8,17 @@
     <title>Etch-A-Sketch</title>
   </head>
   <body>
-    <header class="header">
-      <h1 class="title">Etch-A-Sketch</h1>
-    </header>
-    <main class="main">
-      <div class="options">
-        <input type="color" id="colorPicker" />
-        <button class="colorBtn">Color mode</button>
-        <button class="rainbowBtn">Rainbow mode</button>
-        <button class="eraserBtn">Eraser mode</button>
-        <button class="clearBtn">Clear mode</button>
+    <div class="flex-container">
+      <div class="title"><h1>Etch-A-Sketch</h1></div>
+      <div class="content">
+        <div class="board"></div>
+        <div class="buttons">
+          <button>Black</button>
+          <button>White</button>
+          <button>Random</button>
+          <button>Reset</button>
+        </div>
       </div>
-      <div class="grid"></div>
-    </main>
+    </div>
   </body>
 </html>
