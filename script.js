@@ -1,9 +1,16 @@
 var number = document.querySelector(".number");
+var error = document.querySelector(".error");
 
 // Grabs the user's desired number of squares
+// If the number is greater than 64, return an error
 const gridSize = () => {
   var input = number.value;
-  gridLayout(input);
+  if (number.value > 64) {
+    error.style.display = "";
+  } else {
+    error.style.display = "none";
+    gridLayout(input);
+  }
 };
 
 const gridLayout = (size) => {
