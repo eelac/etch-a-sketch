@@ -43,13 +43,13 @@ button {
 
 /* Grid styles */
 .grid-container {
-  display: flex;
-  justify-content: center;
+  width: 30rem;
+  height: 30rem;
+  margin: 0 auto;
+  display: grid;
+  border: 1px solid black;
 }
 
 .grid {
-  width: 30rem;
-  height: 30rem;
-  display: grid;
   border: 1px solid black;
 }
