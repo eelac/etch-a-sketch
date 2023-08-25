@@ -1,6 +1,7 @@
 // Grabs the user's desired number of squares
 // If the number is lower than 1 or greater than 64, return an error
 var error = document.querySelector(".error");
+
 const gridSize = () => {
   var input = number.value;
   if (number.value < 1 || number.value > 64) {
@@ -13,6 +14,7 @@ const gridSize = () => {
 
 // Update grid when user leaves the input box or hits enter
 var number = document.querySelector(".number");
+
 number.addEventListener("focusout", gridSize);
 number.addEventListener("keydown", (e) => {
   if (e.keyCode === 13) {
@@ -27,8 +29,7 @@ const gridLayout = (size) => {
   container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
   // Clears the board
-  let board = document.querySelector(".grid-container");
-  let squares = board.querySelectorAll("div");
+  const squares = container.querySelectorAll("div");
   squares.forEach((div) => div.remove());
 
   // Populates board with user input number
