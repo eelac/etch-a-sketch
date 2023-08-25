@@ -5,7 +5,7 @@ var error = document.querySelector(".error");
 const gridSize = () => {
   var input = number.value;
 
-  if (number.value < 1 || number.value > 64) {
+  if (input < 1 || input > 64) {
     error.style.display = "";
   } else {
     error.style.display = "none";
@@ -55,6 +55,20 @@ const toggle = () => {
 
   toggle.addEventListener("click", toggleLines);
 };
+
+// Intialize all buttons for colors
+const color = document.querySelector(".color");
+const rainbow = document.querySelector(".rainbow");
+const eraser = document.querySelector(".eraser");
+const clear = document.querySelector(".clear");
+const colorChange = document.querySelector(".colorWheel");
+let colorValue = "";
+
+// Color value updates on change
+colorChange.addEventListener("change", () => {
+  colorValue = colorChange.value;
+  return colorValue;
+});
 
 // Default size of the grid and adds the toggle function
 gridLayout(16);
