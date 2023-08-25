@@ -1,8 +1,6 @@
-var number = document.querySelector(".number");
-var error = document.querySelector(".error");
-
 // Grabs the user's desired number of squares
 // If the number is lower than 1 or greater than 64, return an error
+var error = document.querySelector(".error");
 const gridSize = () => {
   var input = number.value;
   if (number.value < 1 || number.value > 64) {
@@ -12,6 +10,15 @@ const gridSize = () => {
     gridLayout(input);
   }
 };
+
+// Update grid when user leaves the input box or hits enter
+var number = document.querySelector(".number");
+number.addEventListener("focusout", gridSize);
+number.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    gridSize();
+  }
+});
 
 const gridLayout = (size) => {
   // Defines number of squares
@@ -32,13 +39,17 @@ const gridLayout = (size) => {
   }
 };
 
-// Update grid when user leaves the input box or hits enter
-number.addEventListener("focusout", gridSize);
-number.addEventListener("keydown", (e) => {
-  if (e.keyCode === 13) {
-    gridSize();
-  }
-});
-
 // Default size of the grid
 gridLayout(16);
+
+// Hides or shows grid lines
+var toggle = document.querySelector(".lines");
+var line = document.querySelectorAll(".grid");
+
+const toggleLines = () => {
+  for (const lines of line) {
+    lines.classList.toggle("grid");
+  }
+};
+
+toggle.addEventListener("click", toggleLines);

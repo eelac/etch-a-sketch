@@ -53,10 +53,6 @@ input[type="color"] {
   transform: scale(1.5);
 }
 
-::placeholder {
-  color: black;
-}
-
 /* Grid styles */
 .grid-container {
   width: 40rem;
@@ -64,6 +60,7 @@ input[type="color"] {
   margin: 0 auto;
   display: grid;
   border: 1px solid black;
+  background-color: white;
 }
 
 .grid {
