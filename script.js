@@ -4,11 +4,13 @@ var error = document.querySelector(".error");
 
 const gridSize = () => {
   var input = number.value;
+
   if (number.value < 1 || number.value > 64) {
     error.style.display = "";
   } else {
     error.style.display = "none";
     gridLayout(input);
+    toggle();
   }
 };
 
@@ -40,17 +42,20 @@ const gridLayout = (size) => {
   }
 };
 
-// Default size of the grid
-gridLayout(16);
-
 // Hides or shows grid lines
-var toggle = document.querySelector(".lines");
-var line = document.querySelectorAll(".grid");
+const toggle = () => {
+  var toggle = document.querySelector(".lines");
+  var line = document.querySelectorAll(".grid");
 
-const toggleLines = () => {
-  for (const lines of line) {
-    lines.classList.toggle("grid");
-  }
+  const toggleLines = () => {
+    for (const lines of line) {
+      lines.classList.toggle("grid");
+    }
+  };
+
+  toggle.addEventListener("click", toggleLines);
 };
 
-toggle.addEventListener("click", toggleLines);
+// Default size of the grid and adds the toggle function
+gridLayout(16);
+toggle();
