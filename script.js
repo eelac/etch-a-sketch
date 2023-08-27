@@ -24,6 +24,10 @@ number.addEventListener("keydown", (e) => {
   }
 });
 
+const changeColor = () => {
+  gridElement.style.backgroundColor = "black";
+};
+
 const gridLayout = (size) => {
   // Defines number of squares
   const container = document.querySelector(".grid-container");
@@ -36,9 +40,16 @@ const gridLayout = (size) => {
 
   // Populates board with user input number
   for (let i = 0; i < size * size; i++) {
-    const gridElement = document.createElement("div");
+    let gridElement = document.createElement("div");
+
+    // Changes the background color
+    const changeColor = () => {
+      gridElement.style.backgroundColor = "black";
+    };
+
     gridElement.setAttribute("class", "grid");
     container.insertAdjacentElement("beforeend", gridElement);
+    gridElement.addEventListener("click", changeColor);
   }
 };
 
