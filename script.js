@@ -95,6 +95,7 @@ const gridLayout = (size) => {
     gridElement.setAttribute("class", "grid");
     container.insertAdjacentElement("beforeend", gridElement);
     gridElement.addEventListener("mouseover", changeColor);
+    gridElement.addEventListener("mousedown", changeColor);
   }
 };
 
