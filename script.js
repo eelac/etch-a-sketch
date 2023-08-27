@@ -1,3 +1,17 @@
+// Intialize all buttons for colors
+const color = document.querySelector(".color");
+const rainbow = document.querySelector(".rainbow");
+const eraser = document.querySelector(".eraser");
+const clear = document.querySelector(".clear");
+const colorChange = document.querySelector(".colorWheel");
+let colorValue = "black";
+
+// Color value updates on change
+colorChange.addEventListener("change", () => {
+  colorValue = colorChange.value;
+  return colorValue;
+});
+
 // Grabs the user's desired number of squares
 // If the number is lower than 1 or greater than 64, return an error
 var error = document.querySelector(".error");
@@ -24,10 +38,6 @@ number.addEventListener("keydown", (e) => {
   }
 });
 
-const changeColor = () => {
-  gridElement.style.backgroundColor = "black";
-};
-
 const gridLayout = (size) => {
   // Defines number of squares
   const container = document.querySelector(".grid-container");
@@ -44,7 +54,7 @@ const gridLayout = (size) => {
 
     // Changes the background color
     const changeColor = () => {
-      gridElement.style.backgroundColor = "black";
+      gridElement.style.backgroundColor = colorValue;
     };
 
     gridElement.setAttribute("class", "grid");
@@ -66,20 +76,6 @@ const toggle = () => {
 
   toggle.addEventListener("click", toggleLines);
 };
-
-// Intialize all buttons for colors
-const color = document.querySelector(".color");
-const rainbow = document.querySelector(".rainbow");
-const eraser = document.querySelector(".eraser");
-const clear = document.querySelector(".clear");
-const colorChange = document.querySelector(".colorWheel");
-let colorValue = "";
-
-// Color value updates on change
-colorChange.addEventListener("change", () => {
-  colorValue = colorChange.value;
-  return colorValue;
-});
 
 // Default size of the grid and adds the toggle function
 gridLayout(16);
