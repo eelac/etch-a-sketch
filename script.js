@@ -5,6 +5,7 @@ const eraser = document.querySelector(".eraser");
 const clear = document.querySelector(".clear");
 const colorChange = document.querySelector(".colorWheel");
 let colorValue = "black";
+let userBtn = "color";
 
 // Color value updates on change
 colorChange.addEventListener("change", () => {
@@ -12,12 +13,31 @@ colorChange.addEventListener("change", () => {
   return colorValue;
 });
 
+// Updates the color depending on user button choice
+color.addEventListener("click", () => {
+  userBtn = "color";
+});
+rainbow.addEventListener("click", () => {
+  userBtn = "rainbow";
+});
+eraser.addEventListener("click", () => {
+  userBtn = "white";
+});
+
+const resetBoard = () => {
+  const container = document.querySelector(".grid-container");
+  const squares = container.querySelectorAll("div");
+  squares.forEach((div) => (div.style.backgroundColor = "white"));
+};
+
+clear.addEventListener("click", resetBoard);
+
 // Grabs the user's desired number of squares
 // If the number is lower than 1 or greater than 64, return an error
-var error = document.querySelector(".error");
+const error = document.querySelector(".error");
 
 const gridSize = () => {
-  var input = number.value;
+  const input = number.value;
 
   if (input < 1 || input > 64) {
     error.style.display = "";
@@ -50,11 +70,19 @@ const gridLayout = (size) => {
 
   // Populates board with user input number
   for (let i = 0; i < size * size; i++) {
-    let gridElement = document.createElement("div");
+    const gridElement = document.createElement("div");
 
     // Changes the background color
     const changeColor = () => {
-      gridElement.style.backgroundColor = colorValue;
+      if (userBtn === "color") {
+        gridElement.style.backgroundColor = colorValue;
+      } else if (userBtn === "rainbow") {
+        gridElement.style.backgroundColor = `hsl(${
+          Math.random() * 360
+        }, 100%, 50%)`;
+      } else if (userBtn === "white") {
+        gridElement.style.backgroundColor = "white";
+      }
     };
 
     gridElement.setAttribute("class", "grid");
