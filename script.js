@@ -24,6 +24,7 @@ eraser.addEventListener("click", () => {
   userBtn = "white";
 });
 
+// Clears the board
 const resetBoard = () => {
   const container = document.querySelector(".grid-container");
   const squares = container.querySelectorAll("div");
@@ -31,6 +32,11 @@ const resetBoard = () => {
 };
 
 clear.addEventListener("click", resetBoard);
+
+// Click and drag functionality for the grid
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 
 // Grabs the user's desired number of squares
 // If the number is lower than 1 or greater than 64, return an error
@@ -49,7 +55,7 @@ const gridSize = () => {
 };
 
 // Update grid when user leaves the input box or hits enter
-var number = document.querySelector(".number");
+const number = document.querySelector(".number");
 
 number.addEventListener("focusout", gridSize);
 number.addEventListener("keydown", (e) => {
@@ -73,7 +79,8 @@ const gridLayout = (size) => {
     const gridElement = document.createElement("div");
 
     // Changes the background color
-    const changeColor = () => {
+    const changeColor = (e) => {
+      if (e.type === "mouseover" && !mouseDown) return;
       if (userBtn === "color") {
         gridElement.style.backgroundColor = colorValue;
       } else if (userBtn === "rainbow") {
@@ -87,14 +94,14 @@ const gridLayout = (size) => {
 
     gridElement.setAttribute("class", "grid");
     container.insertAdjacentElement("beforeend", gridElement);
-    gridElement.addEventListener("click", changeColor);
+    gridElement.addEventListener("mouseover", changeColor);
   }
 };
 
 // Hides or shows grid lines
 const toggle = () => {
-  var toggle = document.querySelector(".lines");
-  var line = document.querySelectorAll(".grid");
+  const toggle = document.querySelector(".lines");
+  const line = document.querySelectorAll(".grid");
 
   const toggleLines = () => {
     for (const lines of line) {
